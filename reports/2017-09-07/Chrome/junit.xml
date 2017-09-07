@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="1" tests="1" time="3.491773">
+<testcase classname="Control Panel - Formats filter" name="Test 739: Control Panel - Formats filter" time="3.491773">
+<skipped><![CDATA[Given I open a desktop version of site......................................passed
+When I login as valid user..................................................passed
+Then I am at "Dashboard" page...............................................passed
+And I verify that "DASHBOARD" is selected in navigation panel menu..........undefined
+]]></skipped>
+</testcase>
+</testsuite>
