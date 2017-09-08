@@ -1,4 +1,5 @@
 .idea/
+reports/
 target/
 .DS_store
 selenium-cucumber-framework.iml

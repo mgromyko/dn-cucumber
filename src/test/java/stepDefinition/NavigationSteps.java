@@ -13,15 +13,9 @@ public class NavigationSteps {
         BrowserActions.openUrl(webURL);
     }
 
-    @When("^I open a desktop version of site$")
+    @When("^I open a browser and go to login page$")
     public void iOpenDesktopVersionOfSite() throws Throwable {
         String desktopUrl = "https://vm06.atwss.com:8443/login.htm";
-        BrowserActions.openUrl(desktopUrl);
-    }
-
-    @When("^I open a mobile version of site$")
-    public void iOpenMobileVersionOfSite() throws Throwable {
-        String desktopUrl = "https://vm06.atwss.com:8443/m/login.htm";
         BrowserActions.openUrl(desktopUrl);
     }
 

@@ -26,6 +26,7 @@ public class WebdriverFactory {
 
     public static WebDriver createWebdriver() {
         caps = new DesiredCapabilities();
+
         String seleniumEnvironment = TestRunner.config.get("seleniumEnvironment");
 
         if (seleniumEnvironment.equals("local")) {

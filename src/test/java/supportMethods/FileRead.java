@@ -15,7 +15,7 @@ public class FileRead {
         return new FileInputStream(new File(file));
     }
 
-    public static Map<String, String> readProperties() throws FileNotFoundException, IOException {
+    public static Map<String, String> readProperties() throws IOException {
 
         Properties prop = new Properties();
         prop.load(readFile("src/test/resources/config.properties"));
@@ -31,6 +31,4 @@ public class FileRead {
 
         return properties;
     }
-
-
 }

@@ -14,7 +14,6 @@ import java.util.Map;
         tags = {"~@ignore"},
         plugin = {"pretty"})
 public class TestRunner {
-
     public static Map<String, String> config;
     public static Scenario scenario;
 }
