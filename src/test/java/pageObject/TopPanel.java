@@ -19,4 +19,12 @@ public class TopPanel {
     public static WebElement selectedMenuItem(){
         return driver.findElement(By.xpath("//*[@class='gwt-Anchor menu-item main-menu-selected']"));
     }
+
+    public static WebElement callItemsToCreatePopUp(){
+        return driver.findElement(By.xpath("//a[@class='select-item']"));
+    }
+
+    public static WebElement selectItemToCreatePopUp(String itemToCreate){
+        return driver.findElement(By.xpath("//div[@class='popupContent']//div[@class='gwt-Label' and text()='" + itemToCreate + "']"));
+    }
 }

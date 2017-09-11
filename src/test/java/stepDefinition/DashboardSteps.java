@@ -7,6 +7,6 @@ import pageObject.DashboardPage;
 public class DashboardSteps {
     @Then("^I am at Dashboard page$")
     public void iAmAtDashboardPage() throws Throwable {
-        DashboardPage.controlHeader().isDisplayed();
+        DashboardPage.treatDashboardElement().isDisplayed();
     }
 }
