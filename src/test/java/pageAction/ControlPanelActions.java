@@ -17,7 +17,7 @@ public class ControlPanelActions {
     }
 
     public static void clickHideFiltersLink(){
-        ControlPanel.hideFiltersLink();
+        ControlPanel.hideFiltersLink().click();
     }
 
     public static WebElement getStatusFilterDescription(){
