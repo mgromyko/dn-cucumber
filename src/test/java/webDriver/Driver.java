@@ -1,26 +1,34 @@
 package webDriver;
 
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import supportFactory.WebdriverFactory;
 import testRunner.TestRunner;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class Driver {
 
     public static WebDriver webdriver;
+    public static long timeStamp;
 
     public synchronized static WebDriver getCurrentDriver() {
 
         if (webdriver == null) {
             webdriver = WebdriverFactory.createWebdriver();
             webdriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+            webdriver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+            webdriver.manage().deleteAllCookies();
+            webdriver.manage().window().maximize();
+            Calendar calendar = Calendar.getInstance();
+            Date now = calendar.getTime();
+            timeStamp = now.getTime();
         }
         return webdriver;
     }
@@ -51,4 +59,13 @@ public class Driver {
         TestRunner.scenario.write(string);
     }
 
+    public static void waitForElement(WebElement ele){
+        WebDriverWait wait = new WebDriverWait(webdriver, 10);
+        wait.until(ExpectedConditions.visibilityOf(ele));
+    }
+
+    public static void waitForElementToDisappear(WebElement ele){
+        WebDriverWait wait = new WebDriverWait(webdriver, 10);
+        wait.until(ExpectedConditions.invisibilityOf(ele));
+    }
 }

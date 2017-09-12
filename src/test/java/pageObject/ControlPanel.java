@@ -1,5 +1,6 @@
 package pageObject;
 
+import com.gargoylesoftware.htmlunit.javascript.host.canvas.ext.WEBGL_compressed_texture_s3tc;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -62,5 +63,9 @@ public class ControlPanel {
 
     public static WebElement applyBtnDisabled(){
         return driver.findElement(By.xpath("//*[@id='applyButton' and contains(@class,'disabled')]"));
+    }
+
+    public static WebElement filtersPopUp(){
+        return driver.findElement(By.xpath(""));
     }
 }

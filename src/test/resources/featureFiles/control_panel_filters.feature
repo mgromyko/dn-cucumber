@@ -41,7 +41,12 @@ Feature: Control Panel - Formats filter
     And I enter Story Description "Test 739: Control Panel - Formats filter"
     And I add Photo to Story
     And I add Audio to Story
-    Then I wait for 3 seconds
     Then I click Save Story top link
     And I am at Dashboard page
+    Then I click on Tasks filter
+    And I uncheck All filters
+    And I check "Text" filter
+    Then I press ENTER in filters pop-up
+    And I verify that Tasks additional filter has "Text" value
+    And I verify APPLY filters button is enabled
     Then I wait for 3 seconds

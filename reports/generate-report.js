@@ -8,11 +8,11 @@ try {
     var args = process.argv.slice(2);
 
     var options = {
-            theme: 'bootstrap',
+            theme: 'foundation',
             jsonDir: args[0],
             output: args[1],
             reportSuiteAsScenarios: false,
-            launchReport: false,
+            launchReport: true,
         ignoreBadJsonFile: true,
         name: "Desk-Net HTML Test Report",
         brandTitle: "Desk-Net HTML Test Report"

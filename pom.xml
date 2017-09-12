@@ -103,12 +103,12 @@
                 <configuration>
                     <systemPropertyVariables>
                         <cucumber.options>--tags ${cucumber.tags} --plugin html:${reports.directory}/html --plugin
-                            junit:${reports.directory}/junit.xml
+                            json:${reports.directory}/results.json
                         </cucumber.options>
                         <browser>${browser}</browser>
                         <browserVersion>${browserVersion}</browserVersion>
                         <platform>${platform}</platform>
-                        <platformVersion>${platformVersion}</platformVersion>
+                        <platformVersion>${platformVersion}</platformVersion>§
                     </systemPropertyVariables>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
