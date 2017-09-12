@@ -7,9 +7,6 @@ import org.junit.Assert;
 import pageAction.CommonPageActions;
 import pageAction.BrowserActions;
 
-import java.util.Calendar;
-import java.util.Date;
-
 public class NavigationSteps {
     @Given("^I open URL \"([^\"]*)\"$")
     public void iOpenUrl(String webURL) throws Throwable {
