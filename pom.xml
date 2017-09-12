@@ -108,7 +108,7 @@
                         <browser>${browser}</browser>
                         <browserVersion>${browserVersion}</browserVersion>
                         <platform>${platform}</platform>
-                        <platformVersion>${platformVersion}</platformVersion>§
+                        <platformVersion>${platformVersion}</platformVersion>
                     </systemPropertyVariables>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
