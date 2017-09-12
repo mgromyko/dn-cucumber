@@ -1,11 +1,13 @@
 package stepDefinition;
 
 import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.junit.Assert;
 import pageAction.ControlPanelActions;
 import pageObject.ControlPanel;
+import webDriver.Driver;
 
 import java.util.List;
 
@@ -42,12 +44,15 @@ public class ControlPanelSteps {
     public void iClickOnTasksFilter(String filterName) throws Throwable {
         switch (filterName) {
             case "Status":
+                Driver.waitForElement(ControlPanel.statusFilterDescription());
                 ControlPanel.statusFilterDescription().click();
                 break;
             case "Tasks":
+                Driver.waitForElement(ControlPanel.tasksFilterDescription());
                 ControlPanel.tasksFilterDescription().click();
                 break;
             case "Users":
+                Driver.waitForElement(ControlPanel.usersFilterDescription());
                 ControlPanel.usersFilterDescription().click();
                 break;
         }
@@ -111,8 +116,30 @@ public class ControlPanelSteps {
         switch (btnState) {
             case "enabled":
                 ControlPanel.applyBtnEnabled().isDisplayed();
+                break;
             case "disabled":
                 ControlPanel.applyBtnDisabled().isDisplayed();
+                break;
         }
+    }
+
+    @And("^I uncheck All filters$")
+    public void iUncheckAllFilters() throws Throwable {
+        ControlPanel.checkedFilterParentOption("All").click();
+    }
+
+    @And("^I check All filters$")
+    public void iCheckAllFilters() throws Throwable {
+        ControlPanel.uncheckedFilterParentOption("All").click();
+    }
+
+    @And("^I check \"([^\"]*)\" filter$")
+    public void iCheckFilter(String filterName) throws Throwable {
+        ControlPanel.uncheckedFilterChildOption(filterName).click();
+    }
+
+    @And("^I uncheck \"([^\"]*)\" filter$")
+    public void iSelectFilter(String filterName) throws Throwable {
+        ControlPanel.checkedFilterChildOption(filterName).click();
     }
 }

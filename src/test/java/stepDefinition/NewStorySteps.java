@@ -1,9 +1,9 @@
 package stepDefinition;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import pageObject.StoryCreationPage;
+import webDriver.Driver;
 
 public class NewStorySteps {
     @And("^I am at new Story creation page$")
@@ -13,7 +13,7 @@ public class NewStorySteps {
 
     @And("^I enter Story Description \"([^\"]*)\"$")
     public void iEnterStoryDescription(String text) throws Throwable {
-        StoryCreationPage.descriptionTextArea().sendKeys(text);
+        StoryCreationPage.descriptionTextArea().sendKeys(Driver.timeStamp + "-" + text);
     }
 
     @And("^I add (Text|Photo|Photo Gallery|Graphic|Video|Audio) to Story$")
