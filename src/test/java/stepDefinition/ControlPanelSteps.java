@@ -1,7 +1,6 @@
 package stepDefinition;
 
 import cucumber.api.DataTable;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.junit.Assert;
@@ -14,7 +13,11 @@ import java.util.List;
 public class ControlPanelSteps {
     @And("^I click MoreFilters link at Control Panel$")
     public void iClickMoreFiltersLinkAtControlPanel() throws Throwable {
-        ControlPanelActions.clickMoreFiltersLink();
+        try {
+            ControlPanelActions.clickMoreFiltersLink();
+        } catch (Exception e) {
+            System.out.println("Filters are already expanded or 'More Filters' link was not found!");
+        }
     }
 
     @And("^I click HideFilters link at Control Panel$")
@@ -26,13 +29,13 @@ public class ControlPanelSteps {
     public void iVerifyThatAdditionalFilterHasValue(String filterName, String filterValue) throws Throwable {
         switch (filterName) {
             case "Status":
-                Assert.assertTrue(ControlPanelActions.getStatusFilterDescription().getText().equalsIgnoreCase(filterValue));
+                Assert.assertTrue(ControlPanelActions.getStatusFilterDescription().equalsIgnoreCase(filterValue));
                 break;
             case "Tasks":
-                Assert.assertTrue(ControlPanelActions.getTasksFilterDescription().getText().equalsIgnoreCase(filterValue));
+                Assert.assertTrue(ControlPanelActions.getTasksFilterDescription().equalsIgnoreCase(filterValue));
                 break;
             case "Users":
-                Assert.assertTrue(ControlPanelActions.getUsersFilterDescription().getText().equalsIgnoreCase(filterValue));
+                Assert.assertTrue(ControlPanelActions.getUsersFilterDescription().equalsIgnoreCase(filterValue));
                 break;
             default:
                 throw new Exception("You have indicated wrong filter name. Allowed options: [\"Status\",\"Tasks\",\"Users\"]");
@@ -41,7 +44,7 @@ public class ControlPanelSteps {
     }
 
     @Then("^I click on (Status|Tasks|Users) filter$")
-    public void iClickOnTasksFilter(String filterName) throws Throwable {
+    public void iClickOnFilterName(String filterName) throws Throwable {
         switch (filterName) {
             case "Status":
                 Driver.waitForElement(ControlPanel.statusFilterDescription());
@@ -123,6 +126,15 @@ public class ControlPanelSteps {
         }
     }
 
+    @And("^I click APPLY filters button$")
+    public void iClickAPPLYFiltersButton() throws Throwable {
+        try {
+            ControlPanel.applyBtnEnabled().click();
+        } catch (Exception e) {
+            System.out.println("Apply button is either not visible or disabled");
+        }
+    }
+
     @And("^I uncheck All filters$")
     public void iUncheckAllFilters() throws Throwable {
         ControlPanel.checkedFilterParentOption("All").click();
@@ -141,5 +153,31 @@ public class ControlPanelSteps {
     @And("^I uncheck \"([^\"]*)\" filter$")
     public void iSelectFilter(String filterName) throws Throwable {
         ControlPanel.checkedFilterChildOption(filterName).click();
+    }
+
+    @And("^I see active filters: \"([^\"]*)\"$")
+    public void iSeeActiveFilters(String expectedFilters) throws Throwable {
+        Assert.assertTrue(ControlPanelActions.getActiveFiltersText().equalsIgnoreCase(expectedFilters));
+    }
+
+    @And("^I reset all Dashboard filters$")
+    public void iResetAllDashboardFilters() throws Throwable {
+        iClickMoreFiltersLinkAtControlPanel();
+        if (!ControlPanelActions.getStatusFilterDescription().equalsIgnoreCase("All statuses")) {
+            iClickOnFilterName("Status");
+            iCheckAllFilters();
+            ControlPanel.enterBtnFilterPopUp().click();
+        }
+        if (!ControlPanelActions.getTasksFilterDescription().equalsIgnoreCase("Any task")) {
+            iClickOnFilterName("Tasks");
+            iCheckAllFilters();
+            ControlPanel.enterBtnFilterPopUp().click();
+        }
+        if (!ControlPanelActions.getUsersFilterDescription().equalsIgnoreCase("All")) {
+            iClickOnFilterName("Users");
+            iCheckAllFilters();
+            ControlPanel.enterBtnFilterPopUp().click();
+        }
+        iClickAPPLYFiltersButton();
     }
 }

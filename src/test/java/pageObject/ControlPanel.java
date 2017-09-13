@@ -63,4 +63,8 @@ public class ControlPanel {
     public static WebElement applyBtnDisabled(){
         return driver.findElement(By.xpath("//*[@id='applyButton' and contains(@class,'disabled')]"));
     }
+
+    public static WebElement activeFilters(){
+        return driver.findElement(By.xpath("//span[@class='active-filters']"));
+    }
 }

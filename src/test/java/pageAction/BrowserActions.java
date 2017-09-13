@@ -1,5 +1,6 @@
 package pageAction;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -13,5 +14,9 @@ public class BrowserActions {
     public static void openUrl(String websiteUrl) {
         driver.get(websiteUrl);
         wait.until(ExpectedConditions.titleContains("Login - Desk-Net"));
+    }
+
+    public static void waitForPageLoadingIsCompleted(){
+        wait.until(ExpectedConditions.attributeContains(By.xpath("//div[@id='waitWidget']"),"aria-hidden", "true"));
     }
 }

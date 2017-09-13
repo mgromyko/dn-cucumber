@@ -1,6 +1,7 @@
 package stepDefinition;
 
 import cucumber.api.java.en.Then;
+import pageAction.BrowserActions;
 import webDriver.Driver;
 
 public class GeneralPurpose {
@@ -17,5 +18,11 @@ public class GeneralPurpose {
     @Then("^I wait for (\\d+) seconds$")
     public void iWaitForSeconds(int sec) throws Throwable {
         Thread.sleep(sec*1000);
+    }
+
+    @Then("^I wait for page loading has been completed$")
+    public void iWaitForPageLoadingHasBeenCompleted() throws Throwable {
+        BrowserActions.waitForPageLoadingIsCompleted();
+        Thread.sleep(1000);
     }
 }
