@@ -20,15 +20,19 @@ public class ControlPanelActions {
         ControlPanel.hideFiltersLink().click();
     }
 
-    public static WebElement getStatusFilterDescription(){
-        return ControlPanel.statusFilterDescription();
+    public static String getStatusFilterDescription(){
+        return ControlPanel.statusFilterDescription().getText();
     }
 
-    public static WebElement getTasksFilterDescription(){
-        return ControlPanel.tasksFilterDescription();
+    public static String getTasksFilterDescription(){
+        return ControlPanel.tasksFilterDescription().getText();
     }
 
-    public static WebElement getUsersFilterDescription(){
-        return ControlPanel.usersFilterDescription();
+    public static String getUsersFilterDescription(){
+        return ControlPanel.usersFilterDescription().getText();
+    }
+
+    public static String getActiveFiltersText(){
+        return ControlPanel.activeFilters().getText();
     }
 }

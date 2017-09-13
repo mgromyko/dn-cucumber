@@ -3,10 +3,11 @@ Feature: Control Panel - Formats filter
   Background:
     Given I open a browser and go to login page
     And I am at Login page
+    Then I login as valid user
+    And I reset all Dashboard filters
 
   Scenario: Test 739: Control Panel - Formats filter
-    When I login as valid user
-    Then I am at "Dashboard" page
+    When I am at "Dashboard" page
     And I verify that "DASHBOARD" is selected in navigation panel menu
     And I click MoreFilters link at Control Panel
     Then I verify that Status additional filter has "All statuses" value
@@ -49,4 +50,14 @@ Feature: Control Panel - Formats filter
     Then I press ENTER in filters pop-up
     And I verify that Tasks additional filter has "Text" value
     And I verify APPLY filters button is enabled
-    Then I wait for 3 seconds
+    Then I click APPLY filters button
+    And I see active filters: "tasks"
+    Then I click MoreFilters link at Control Panel
+    And I click on Tasks filter
+    And I check "Photo" filter
+    Then I press ENTER in filters pop-up
+    And I verify that Tasks additional filter has "2 selected" value
+    Then I click APPLY filters button
+    And I wait for page loading has been completed
+    And I see active filters: "tasks"
+    Then I wait for 5 seconds
