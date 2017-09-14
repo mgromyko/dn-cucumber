@@ -1,7 +1,9 @@
 package stepDefinition;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+import pageAction.StoryCreationPageActions;
 import pageObject.StoryCreationPage;
 import webDriver.Driver;
 
@@ -48,5 +50,25 @@ public class NewStorySteps {
     @Then("^I click Save Story top link$")
     public void iClickSaveStoryTop() throws Throwable {
         StoryCreationPage.saveLinkTop().click();
+    }
+
+    @Then("^I click (SAVE|SAVE & NEXT|CANCEL) bottom button$")
+    public void iClickSAVENEXTCANCELBottomButton(String buttonName) throws Throwable {
+        switch (buttonName){
+            case "SAVE":
+                StoryCreationPage.saveBtnBottom();
+                break;
+            case "SAVE & NEXT":
+                StoryCreationPage.saveAndNextBtnBottom().click();
+                break;
+            case "Cancel":
+                StoryCreationPage.cancelBtnBottom().click();
+                break;
+        }
+    }
+
+    @And("^I delete first Text article at Tasks Panel$")
+    public void iDeleteFirstTextArticleAtTasksPanel() throws Throwable {
+        StoryCreationPageActions.deleteArticle(StoryCreationPage.TasksPanel.textArticleLabel());
     }
 }
