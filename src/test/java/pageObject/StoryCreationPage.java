@@ -40,11 +40,34 @@ public class StoryCreationPage {
         return driver.findElement(By.xpath("//td[@class='add-publication']/div/div[6]"));
     }
 
+    public static WebElement saveLinkTop(){
+        return driver.findElement(By.xpath("//div[@class='saveLinks']/a[text()='Save']"));
+    }
+
+    public static WebElement cancelLinkTop(){
+        return driver.findElement(By.xpath("//div[@class='saveLinks']/a[text()='Cancel']"));
+    }
+
     public static WebElement saveBtnBottom(){
         return driver.findElement(By.xpath("//div[@class='buttons-bottom']/a[text()='Save']"));
     }
 
-    public static WebElement saveLinkTop(){
-        return driver.findElement(By.xpath("//div[@class='saveLinks']/a[text()='Save']"));
+    public static WebElement saveAndNextBtnBottom(){
+        return driver.findElement(By.xpath("//div[@class='buttons-bottom']/a[text()='Save & Next']"));
     }
+
+    public static WebElement cancelBtnBottom(){
+        return driver.findElement(By.xpath("//div[@class='buttons-bottom']/a[text()='Cancel']"));
+    }
+
+    public static class TasksPanel{
+        public static WebElement textArticleLabel(){
+            return driver.findElement(By.xpath("//div[@class='removeBlock']/div[text()='Text']"));
+        }
+
+        public static WebElement deleteLinkContextMenu(){
+            return driver.findElement(By.xpath("//a[@class='gwt-Anchor' and text()='Delete']"));
+        }
+    }
+
 }
