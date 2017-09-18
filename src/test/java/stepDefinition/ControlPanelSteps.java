@@ -1,6 +1,7 @@
 package stepDefinition;
 
 import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.junit.Assert;
@@ -147,11 +148,13 @@ public class ControlPanelSteps {
 
     @And("^I check \"([^\"]*)\" filter$")
     public void iCheckFilter(String filterName) throws Throwable {
+        ControlPanelActions.scrollFiltersTo(filterName);
         ControlPanel.uncheckedFilterChildOption(filterName).click();
     }
 
     @And("^I uncheck \"([^\"]*)\" filter$")
     public void iSelectFilter(String filterName) throws Throwable {
+        ControlPanelActions.scrollFiltersTo(filterName);
         ControlPanel.checkedFilterChildOption(filterName).click();
     }
 
@@ -179,5 +182,10 @@ public class ControlPanelSteps {
             ControlPanel.enterBtnFilterPopUp().click();
         }
         iClickAPPLYFiltersButton();
+    }
+
+    @Then("^I scroll filters to \"([^\"]*)\"$")
+    public void iScrollFiltersTo(String filterName) throws Throwable {
+        ControlPanelActions.scrollFiltersTo(filterName);
     }
 }
