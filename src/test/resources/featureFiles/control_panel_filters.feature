@@ -37,6 +37,7 @@ Feature: Control Panel - Formats filter
     Then I press CANCEL in filters pop-up
     And I verify that Tasks additional filter has "Any task" value
     And I verify APPLY filters button is disabled
+
     Then I create a new Story
     And I am at new Story creation page
     And I enter Story Description "Test 739: Story without content"
@@ -53,6 +54,7 @@ Feature: Control Panel - Formats filter
     And I delete first Text article at Tasks Panel
     Then I click Save Story top link
     And I am at Dashboard page
+
     Then I click on Tasks filter
     And I uncheck All filters
     And I check "Text" filter
@@ -62,6 +64,7 @@ Feature: Control Panel - Formats filter
     Then I click APPLY filters button
     And I see active filters: "tasks"
     And I verify that "Test 739: Story with Text only" displayed at Story List
+
     Then I click MoreFilters link at Control Panel
     And I click on Tasks filter
     And I check "Photo" filter
@@ -72,4 +75,45 @@ Feature: Control Panel - Formats filter
     And I see active filters: "tasks"
     And I verify that "Test 739: Story with Text only" displayed at Story List
     And I verify that "Test 739: Story with Photo only" displayed at Story List
+
+    Then I click MoreFilters link at Control Panel
+    And I click on Tasks filter
+    And I uncheck "Photo" filter
+    And I uncheck "Text" filter
+    And I check "No tasks" filter
+    Then I press ENTER in filters pop-up
+    And I verify that Tasks additional filter has "No tasks" value
+    Then I click APPLY filters button
+    And I wait for page loading has been completed
+    And I see active filters: "tasks"
+    And I verify that "Test 739: Story without content" displayed at Story List
+
+    Then I click MoreFilters link at Control Panel
+    And I click on Tasks filter
+    And I check "Audio" filter
+    And I check "Text" filter
+    Then I press ENTER in filters pop-up
+    And I verify that Tasks additional filter has "3 selected" value
+    Then I click APPLY filters button
+    And I wait for page loading has been completed
+    And I see active filters: "tasks"
+    And I verify that "Test 739: Story without content" displayed at Story List
+    And I verify that "Test 739: Story with Text only" displayed at Story List
+    And I verify that "Test 739: Story with Audio only" displayed at Story List
+
+    Then I navigate to Story Lists - Story Ideas
+    And I am at "Story Ideas" page
+    Then I click MoreFilters link at Control Panel
+    And I verify that Tasks additional filter has "3 selected" value
+
+    Then I navigate to Story Lists - Short-term
+    And I am at "Short-term Planning" page
+    Then I click MoreFilters link at Control Panel
+    And I verify that Tasks additional filter has "3 selected" value
+
+    Then I navigate to Story Lists - Long-term
+    And I am at "Long-term Planning" page
+    Then I click MoreFilters link at Control Panel
+    And I verify that Tasks additional filter has "3 selected" value
+
     Then I wait for 5 seconds

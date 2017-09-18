@@ -27,4 +27,12 @@ public class TopPanel {
     public static WebElement selectItemToCreatePopUp(String itemToCreate){
         return driver.findElement(By.xpath("//div[@class='popupContent']//div[@class='gwt-Label' and text()='" + itemToCreate + "']"));
     }
+
+    public static WebElement mainMenuNavigationItem(String itemName){
+        return driver.findElement(By.xpath("//div[@class='main-menu']/a[text()='" + itemName +"']"));
+    }
+
+    public static WebElement secondaryMenuNavigationItem(String itemName){
+        return driver.findElement(By.xpath("//div[@class='popup-menu secondary-menu']/a[text()='" + itemName +"']"));
+    }
 }

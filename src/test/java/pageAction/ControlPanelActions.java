@@ -1,5 +1,7 @@
 package pageAction;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -34,5 +36,9 @@ public class ControlPanelActions {
 
     public static String getActiveFiltersText(){
         return ControlPanel.activeFilters().getText();
+    }
+
+    public static void scrollFiltersTo(String filterName){
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//div[@class='overview-scroll']//span[text()='" + filterName + "']")));
     }
 }
