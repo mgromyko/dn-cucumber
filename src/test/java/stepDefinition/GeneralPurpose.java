@@ -20,6 +20,11 @@ public class GeneralPurpose {
         Thread.sleep(sec*1000);
     }
 
+    @Then("^I wait for a second$")
+    public void iWaitForASecond() throws Throwable {
+        Thread.sleep(1000);
+    }
+
     @Then("^I wait for page loading has been completed$")
     public void iWaitForPageLoadingHasBeenCompleted() throws Throwable {
         BrowserActions.waitForPageLoadingIsCompleted();

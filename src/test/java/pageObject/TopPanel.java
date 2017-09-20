@@ -12,6 +12,14 @@ public class TopPanel {
         return driver.findElement(By.xpath("//a[@class='menu-hamburger']"));
     }
 
+    public static WebElement menuHamburgerPopUp(){
+        return driver.findElement(By.xpath("//div[@class='popup-menu hamburger-popup']"));
+    }
+
+    public static WebElement itemHamburgerPopUp(String hamburgerItem){
+        return driver.findElement(By.xpath("//div[@class='popup-menu hamburger-popup']/*[text()='" + hamburgerItem + "']"));
+    }
+
     public static WebElement logoutBtn(){
         return driver.findElement(By.xpath("//*[@id='logoutId']"));
     }
@@ -34,5 +42,13 @@ public class TopPanel {
 
     public static WebElement secondaryMenuNavigationItem(String itemName){
         return driver.findElement(By.xpath("//div[@class='popup-menu secondary-menu']/a[text()='" + itemName +"']"));
+    }
+
+    public static WebElement navigationMenuItem(String itemHref){
+        return driver.findElement(By.xpath("//a[@href='" + itemHref + "']"));
+    }
+
+    public static WebElement imageLogo(){
+        return driver.findElement(By.xpath("//img[@src='images/desknet_logo.png']"));
     }
 }

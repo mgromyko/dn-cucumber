@@ -116,4 +116,29 @@ Feature: Control Panel - Formats filter
     Then I click MoreFilters link at Control Panel
     And I verify that Tasks additional filter has "3 selected" value
 
+    Then I navigate to Calendar - Short-term
+    And I am at "Short-term Calendar" page
+    Then I click MoreFilters link at Control Panel
+    And I verify that Tasks additional filter has "3 selected" value
+
+    Then I navigate to Calendar - Long-term
+    And I am at "Long-term Calendar" page
+    Then I click MoreFilters link at Control Panel
+    And I verify that Tasks additional filter has "3 selected" value
+
+    Then I navigate to Management - Alerts
+    And I am at "Alerts" page
+    Then I click MoreFilters link at Control Panel
+    And I verify that Tasks additional filter has "3 selected" value
+
+    Then I navigate to Management - Timeline
+    And I am at "Timeline" page
+    Then I click MoreFilters link at Control Panel
+    And I verify that Tasks additional filter has "3 selected" value
+
+    Then I navigate to My Schedule
+    And I am at "My Schedule" page
+    Then I click MoreFilters link at Control Panel
+    And I verify that Tasks additional filter has "3 selected" value
+
     Then I wait for 5 seconds
