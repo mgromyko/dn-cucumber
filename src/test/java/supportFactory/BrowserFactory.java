@@ -4,6 +4,7 @@ import enums.Browser;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
@@ -55,7 +56,10 @@ public class BrowserFactory {
         switch (browser) {
             case Chrome:
                 System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/drivers/chromedriver");
-                return new ChromeDriver();
+                // MacOS does not allow to maximize window - simple workaround
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--kiosk");
+                return new ChromeDriver(options);
             case Firefox:
                 System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/drivers/geckodriver");
                 return new FirefoxDriver();

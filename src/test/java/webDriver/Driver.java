@@ -25,7 +25,6 @@ public class Driver {
             webdriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             webdriver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
             webdriver.manage().deleteAllCookies();
-            webdriver.manage().window().maximize();
             Calendar calendar = Calendar.getInstance();
             Date now = calendar.getTime();
             timeStamp = now.getTime();
