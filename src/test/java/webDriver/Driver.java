@@ -22,8 +22,8 @@ public class Driver {
 
         if (webdriver == null) {
             webdriver = WebdriverFactory.createWebdriver();
-            webdriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-            webdriver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+            webdriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+            webdriver.manage().timeouts().pageLoadTimeout(3, TimeUnit.SECONDS);
             webdriver.manage().deleteAllCookies();
             Calendar calendar = Calendar.getInstance();
             Date now = calendar.getTime();

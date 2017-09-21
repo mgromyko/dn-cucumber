@@ -3,7 +3,9 @@ package pageAction;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pageObject.LoginPage;
 import pageObject.TopPanel;
 import webDriver.Driver;
 
@@ -18,5 +20,12 @@ public class TopPanelActions {
 
     public static void callSecondaryMenuForNavigationItem(WebElement ele){
         action.moveToElement(ele).perform();
+    }
+
+    public static void clickOnAdvancedSearchLink(){
+        BrowserActions.waitForPageLoadingIsCompleted();
+        TopPanel.searchIcon().click();
+        wait.until(ExpectedConditions.elementToBeClickable(TopPanel.advancedSearchLink()));
+        TopPanel.advancedSearchLink().click();
     }
 }

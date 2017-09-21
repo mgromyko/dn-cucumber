@@ -32,7 +32,7 @@ public class ControlPanel {
         return driver.findElement(By.xpath("//span[text()='Users']/following::div[@class='comboCaption inline-list-box-label'][1]"));
     }
 
-    public static WebElement checkedFilterParentOption(String optionName){
+    public static WebElement checkedFilterParentOption(String optionName) {
         return driver.findElement(By.xpath("//td[div/a/@class='aCheckBox checked']/following-sibling::td/div[text()='" + optionName + "']"));
     }
 
@@ -40,31 +40,31 @@ public class ControlPanel {
         return driver.findElement(By.xpath("//td[div/a/@class='aCheckBox']/following-sibling::td/div[text()='" + optionName + "']"));
     }
 
-    public static WebElement checkedFilterChildOption(String optionName){
+    public static WebElement checkedFilterChildOption(String optionName) {
         return driver.findElement(By.xpath("//div[a/@class='aCheckBox checked']//*[text()='" + optionName + "']"));
     }
 
-    public static WebElement uncheckedFilterChildOption(String optionName){
+    public static WebElement uncheckedFilterChildOption(String optionName) {
         return driver.findElement(By.xpath("//div[a/@class='aCheckBox']//*[text()='" + optionName + "']"));
     }
 
-    public static WebElement cancelBtnFilterPopUp(){
+    public static WebElement cancelBtnFilterPopUp() {
         return driver.findElement(By.xpath("//div[@class='popupContent']//a[text()='Cancel']"));
     }
 
-    public static WebElement enterBtnFilterPopUp(){
+    public static WebElement enterBtnFilterPopUp() {
         return driver.findElement(By.xpath("//div[@class='popupContent']//a[text()='Enter']"));
     }
 
-    public static WebElement applyBtnEnabled(){
+    public static WebElement applyBtnEnabled() {
         return driver.findElement(By.xpath("//*[@id='applyButton' and not(contains(@class,'disabled'))]"));
     }
 
-    public static WebElement applyBtnDisabled(){
+    public static WebElement applyBtnDisabled() {
         return driver.findElement(By.xpath("//*[@id='applyButton' and contains(@class,'disabled')]"));
     }
 
-    public static WebElement activeFilters(){
+    public static WebElement activeFilters() {
         return driver.findElement(By.xpath("//span[@class='active-filters']"));
     }
 }
