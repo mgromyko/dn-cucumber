@@ -59,4 +59,5 @@ public class TopPanel {
     public static WebElement advancedSearchLink(){
         return driver.findElement(By.xpath("//a[@class='advancedSearchLink']"));
     }
+
 }
