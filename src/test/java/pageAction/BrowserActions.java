@@ -2,6 +2,7 @@ package pageAction;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import webDriver.Driver;
@@ -18,5 +19,9 @@ public class BrowserActions {
 
     public static void waitForPageLoadingIsCompleted(){
         wait.until(ExpectedConditions.attributeContains(By.xpath("//div[@id='waitWidget']"),"aria-hidden", "true"));
+    }
+
+    public static WebElement findElementWithText(String text){
+        return driver.findElement(By.xpath("//*[text()='" + text +"']"));
     }
 }

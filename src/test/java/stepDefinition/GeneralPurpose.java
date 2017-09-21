@@ -1,6 +1,8 @@
 package stepDefinition;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+import enums.Browser;
 import pageAction.BrowserActions;
 import webDriver.Driver;
 
@@ -29,5 +31,10 @@ public class GeneralPurpose {
     public void iWaitForPageLoadingHasBeenCompleted() throws Throwable {
         BrowserActions.waitForPageLoadingIsCompleted();
         Thread.sleep(1000);
+    }
+
+    @And("^I click on \"([^\"]*)\"$")
+    public void iClickOn(String anyText) throws Throwable {
+        BrowserActions.findElementWithText(anyText).click();
     }
 }

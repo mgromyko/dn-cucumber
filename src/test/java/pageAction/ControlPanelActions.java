@@ -1,13 +1,8 @@
 package pageAction;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObject.ControlPanel;
-import pageObject.LoginPage;
 import webDriver.Driver;
 
 public class ControlPanelActions {
@@ -40,5 +35,33 @@ public class ControlPanelActions {
 
     public static void scrollFiltersTo(String filterName){
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//div[@class='overview-scroll']//span[text()='" + filterName + "']")));
+    }
+
+    public static boolean filterIsMissing(String filterName) throws Exception {
+        switch (filterName) {
+            case "Status":
+                try{
+                    ControlPanel.statusFilterDescription();
+                } catch (NoSuchElementException e){
+                    return true;
+                }
+                return false;
+            case "Tasks":
+                try{
+                    ControlPanel.tasksFilterDescription();
+                } catch (NoSuchElementException e){
+                    return true;
+                }
+                return false;
+            case "Users":
+                try{
+                    ControlPanel.usersFilterDescription();
+                } catch (NoSuchElementException e){
+                    return true;
+                }
+                return false;
+            default:
+                throw new Exception("You have indicated wrong filter name. Allowed options: [\"Status\",\"Tasks\",\"Users\"]");
+        }
     }
 }

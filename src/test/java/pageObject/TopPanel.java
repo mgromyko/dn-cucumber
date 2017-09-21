@@ -51,4 +51,12 @@ public class TopPanel {
     public static WebElement imageLogo(){
         return driver.findElement(By.xpath("//img[@src='images/desknet_logo.png']"));
     }
+
+    public static WebElement searchIcon(){
+        return driver.findElement(By.xpath("//div[@id='searchId']"));
+    }
+
+    public static WebElement advancedSearchLink(){
+        return driver.findElement(By.xpath("//a[@class='advancedSearchLink']"));
+    }
 }

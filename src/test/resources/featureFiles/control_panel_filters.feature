@@ -4,10 +4,30 @@ Feature: Control Panel - Formats filter
     Given I open a browser and go to login page
     And I am at Login page
     Then I login as valid user
-    And I reset all Dashboard filters
+    And I navigate to Dashboard
 
-  Scenario: Test 739: Control Panel - Formats filter
+  Scenario: Test 739: Control Panel - creating required test data
     When I am at "Dashboard" page
+    Then I create a new Story
+    And I am at new Story creation page
+    And I enter Story Description "Test 739: Story without content"
+    And I delete first Text article at Tasks Panel
+    Then I click SAVE & NEXT bottom button
+    And I enter Story Description "Test 739: Story with Text only"
+    Then I click SAVE & NEXT bottom button
+    And I enter Story Description "Test 739: Story with Photo only"
+    And I add Photo to Story
+    And I delete first Text article at Tasks Panel
+    Then I click SAVE & NEXT bottom button
+    And I enter Story Description "Test 739: Story with Audio only"
+    And I add Audio to Story
+    And I delete first Text article at Tasks Panel
+    Then I click Save Story top link
+    And I am at Dashboard page
+
+  Scenario: Test 739: Control Panel - verify default filter's values
+    When I am at "Dashboard" page
+    Given I reset all Dashboard filters
     And I verify that "DASHBOARD" is selected in navigation panel menu
     And I click MoreFilters link at Control Panel
     Then I verify that Status additional filter has "All statuses" value
@@ -38,23 +58,9 @@ Feature: Control Panel - Formats filter
     And I verify that Tasks additional filter has "Any task" value
     And I verify APPLY filters button is disabled
 
-    Then I create a new Story
-    And I am at new Story creation page
-    And I enter Story Description "Test 739: Story without content"
-    And I delete first Text article at Tasks Panel
-    Then I click SAVE & NEXT bottom button
-    And I enter Story Description "Test 739: Story with Text only"
-    Then I click SAVE & NEXT bottom button
-    And I enter Story Description "Test 739: Story with Photo only"
-    And I add Photo to Story
-    And I delete first Text article at Tasks Panel
-    Then I click SAVE & NEXT bottom button
-    And I enter Story Description "Test 739: Story with Audio only"
-    And I add Audio to Story
-    And I delete first Text article at Tasks Panel
-    Then I click Save Story top link
-    And I am at Dashboard page
-
+  Scenario: Test 739: Control Panel - verify filtering
+    When I am at "Dashboard" page
+    And I click MoreFilters link at Control Panel
     Then I click on Tasks filter
     And I uncheck All filters
     And I check "Text" filter
@@ -101,6 +107,8 @@ Feature: Control Panel - Formats filter
     And I verify that "Test 739: Story with Text only" displayed at Story List
     And I verify that "Test 739: Story with Audio only" displayed at Story List
 
+  Scenario: Test 739: Control Panel - verify selected filters on other pages
+    When I am at "Dashboard" page
     Then I navigate to Story Lists - Story Ideas
     And I am at "Story Ideas" page
     Then I click MoreFilters link at Control Panel
@@ -139,6 +147,36 @@ Feature: Control Panel - Formats filter
     Then I navigate to My Schedule
     And I am at "My Schedule" page
     Then I click MoreFilters link at Control Panel
-    And I verify that Tasks additional filter has "3 selected" value
+    And I do not see Status filter
+    And I do not see Tasks filter
+    And I do not see Users filter
 
-    Then I wait for 5 seconds
+  Scenario: Test 739: Control Panel - Advanced Search
+    When I navigate to Advanced Search
+    And I wait for page loading has been completed
+    And I select Limit to these for 'Assigned to' option
+    Then I click on "Any task"
+    And I verify child filter options checked status
+      | Text          | checked |
+      | Photo         | checked |
+      | Photo Gallery | checked |
+      | Graphic       | checked |
+      | Video         | checked |
+      | Audio         | checked |
+      | Live          | checked |
+      | Table         | checked |
+      | Poll          | checked |
+      | Quiz          | checked |
+      | Sweepstakes   | checked |
+      | Advertisement | checked |
+      | Other         | checked |
+      | Other (2)     | checked |
+      | Other (3)     | checked |
+      | Other (4)     | checked |
+      | Other (5)     | checked |
+      | No tasks      | checked |
+    Then I uncheck All filters
+    And I check "Text" filter
+    And I check "Audio" filter
+    And I check "No tasks" filter
+    Then I press ENTER in filters pop-up

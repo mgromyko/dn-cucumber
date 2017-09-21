@@ -1,5 +1,6 @@
 package stepDefinition;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -54,7 +55,11 @@ public class TopPanelSteps {
 
     @Then("^I navigate to My Schedule$")
     public void iNavigateToMySchedule() throws Throwable {
-        TopPanel.menuHamburger().click();
-        TopPanel.itemHamburgerPopUp("My Schedule").click();
+        TopPanel.mainMenuNavigationItem("My Schedule").click();
+    }
+
+    @When("^I navigate to Advanced Search$")
+    public void iNavigateToAdvancedSearch() throws Throwable {
+        TopPanelActions.clickOnAdvancedSearchLink();
     }
 }

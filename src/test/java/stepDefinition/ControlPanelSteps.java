@@ -5,6 +5,8 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.junit.Assert;
+import org.junit.Test;
+import org.openqa.selenium.NoSuchElementException;
 import pageAction.ControlPanelActions;
 import pageObject.ControlPanel;
 import webDriver.Driver;
@@ -187,5 +189,11 @@ public class ControlPanelSteps {
     @Then("^I scroll filters to \"([^\"]*)\"$")
     public void iScrollFiltersTo(String filterName) throws Throwable {
         ControlPanelActions.scrollFiltersTo(filterName);
+    }
+
+    @Test (expected=NoSuchElementException.class)
+    @And("^I do not see (Status|Tasks|Users) filter$")
+    public void iDoNotSeeStatusTasksUsersFilter(String filterName) throws Throwable {
+        Assert.assertTrue(ControlPanelActions.filterIsMissing(filterName));
     }
 }
