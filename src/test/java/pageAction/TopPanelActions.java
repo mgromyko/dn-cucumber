@@ -22,8 +22,9 @@ public class TopPanelActions {
         action.moveToElement(ele).perform();
     }
 
-    public static void clickOnAdvancedSearchLink(){
+    public static void clickOnAdvancedSearchLink() throws InterruptedException {
         BrowserActions.waitForPageLoadingIsCompleted();
+        Thread.sleep(500);
         TopPanel.searchIcon().click();
         wait.until(ExpectedConditions.elementToBeClickable(TopPanel.advancedSearchLink()));
         TopPanel.advancedSearchLink().click();

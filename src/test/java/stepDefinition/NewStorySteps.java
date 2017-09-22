@@ -9,7 +9,7 @@ import webDriver.Driver;
 public class NewStorySteps {
     @And("^I am at new Story creation page$")
     public void iAmAtNewStoryCreationPage() throws Throwable {
-        StoryCreationPage.treatStoryCreationElement().isDisplayed();
+        StoryCreationPage.treatStoryCreationPage().isDisplayed();
     }
 
     @And("^I enter Story Description \"([^\"]*)\"$")
@@ -17,8 +17,8 @@ public class NewStorySteps {
         StoryCreationPage.descriptionTextArea().sendKeys(Driver.timeStamp + "-" + text);
     }
 
-    @And("^I add (Text|Photo|Photo Gallery|Graphic|Video|Audio) to Story$")
-    public void iAddItemToStory(String itemName) throws Throwable {
+    @And("^I add (Text|Photo|Photo Gallery|Graphic|Video|Audio) task to Story$")
+    public void iAddTaskToStory(String itemName) throws Throwable {
         switch (itemName){
             case "Text":
                 StoryCreationPage.addTextIcon().click();
