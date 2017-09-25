@@ -197,7 +197,10 @@ Feature: Control Panel - Formats filter
     And I add Live task to Event
     Then I add "NY Times" platform to Event
     And I add "NY Times (Online)" platform to Event
+    And I wait for a second
     Then I set platform category to "spo2"
     And I set publication date to "Story idea (no date)"
+    Then I click Save Event top link
+    And I am at Dashboard page
     
     Then I wait for 5 seconds

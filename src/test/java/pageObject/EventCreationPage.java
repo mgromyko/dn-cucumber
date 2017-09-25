@@ -9,7 +9,7 @@ public class EventCreationPage {
     static WebDriver driver = Driver.getCurrentDriver();
 
     public static WebElement treatEventCreationPage(){
-        return driver.findElement(By.xpath("//div[@class='headTitle']/span[text()='Story/Event']"));
+        return driver.findElement(By.xpath("//div[@class='headTitle']/span[contains(text(),'Event')]"));
     }
 
     public static WebElement descriptionTextArea(){

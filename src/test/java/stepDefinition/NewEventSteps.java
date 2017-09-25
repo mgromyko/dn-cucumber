@@ -3,6 +3,7 @@ package stepDefinition;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+import pageAction.EventCreationPageActions;
 import pageObject.EventCreationPage;
 import webDriver.Driver;
 
@@ -52,13 +53,17 @@ public class NewEventSteps {
 
     @Then("^I set platform category to \"([^\"]*)\"$")
     public void iSetPlatformCategoryTo(String categoryName) throws Throwable {
-        EventCreationPage.PlatformsPanel.selectCategory().click();
-        EventCreationPage.PlatformsPanel.selectCategoryPopUp(categoryName).click();
+        EventCreationPageActions.setPlatformCategory(categoryName);
     }
 
     @And("^I set publication date to \"([^\"]*)\"$")
     public void iSetPublicationDateTo(String pubDate) throws Throwable {
         EventCreationPage.PlatformsPanel.publicationDate().click();
         EventCreationPage.PlatformsPanel.publicationDatePopUp(pubDate).click();
+    }
+
+    @Then("^I click Save Event top link$")
+    public void iClickSaveEventTopLink() throws Throwable {
+        EventCreationPage.saveLinkTop().click();
     }
 }
