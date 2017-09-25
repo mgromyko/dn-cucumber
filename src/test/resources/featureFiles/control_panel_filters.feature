@@ -16,11 +16,11 @@ Feature: Control Panel - Formats filter
     And I enter Story Description "Test 739: Story with Text only"
     Then I click SAVE & NEXT bottom button
     And I enter Story Description "Test 739: Story with Photo only"
-    And I add Photo to Story
+    And I add Photo task to Story
     And I delete first Text article at Tasks Panel
     Then I click SAVE & NEXT bottom button
     And I enter Story Description "Test 739: Story with Audio only"
-    And I add Audio to Story
+    And I add Audio task to Story
     And I delete first Text article at Tasks Panel
     Then I click Save Story top link
     And I am at Dashboard page
@@ -154,6 +154,7 @@ Feature: Control Panel - Formats filter
   Scenario: Test 739: Control Panel - Advanced Search
     When I navigate to Advanced Search
     And I wait for page loading has been completed
+    And I enter "Test 739" into advanced search
     And I select Limit to these for 'Assigned to' option
     Then I click on "Any task"
     And I verify child filter options checked status
@@ -180,3 +181,26 @@ Feature: Control Panel - Formats filter
     And I check "Audio" filter
     And I check "No tasks" filter
     Then I press ENTER in filters pop-up
+    Then I click on Search button
+    And I am at "Search results" page
+    And I see "Test 739: Story with Text only" at searching results
+    And I see "Test 739: Story with Audio only" at searching results
+    And I see "Test 739: Story without content" at searching results
+    And I do not see "Test 739: Story with Photo only" at searching results
+
+  Scenario: Test 739: Control Panel - event filters
+    When I am at Dashboard page
+    And I reset all Dashboard filters
+    Then I create a new Event
+    And I am at new Event creation page
+    Then I enter Event Description "SHOW"
+    And I add Live task to Event
+    Then I add "NY Times" platform to Event
+    And I add "NY Times (Online)" platform to Event
+    And I wait for a second
+    Then I set platform category to "spo2"
+    And I set publication date to "Story idea (no date)"
+    Then I click Save Event top link
+    And I am at Dashboard page
+    
+    Then I wait for 5 seconds

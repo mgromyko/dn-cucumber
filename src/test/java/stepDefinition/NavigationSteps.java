@@ -15,7 +15,7 @@ public class NavigationSteps {
 
     @When("^I open a browser and go to login page$")
     public void iOpenDesktopVersionOfSite() throws Throwable {
-        String desktopUrl = "https://vm09.atwss.com:8443/login.htm";
+        String desktopUrl = "https://vm06.atwss.com:8443/login.htm";
         BrowserActions.openUrl(desktopUrl);
     }
 

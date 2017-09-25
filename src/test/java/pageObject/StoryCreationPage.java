@@ -8,7 +8,7 @@ import webDriver.Driver;
 public class StoryCreationPage {
     static WebDriver driver = Driver.getCurrentDriver();
 
-    public static WebElement treatStoryCreationElement(){
+    public static WebElement treatStoryCreationPage(){
         return driver.findElement(By.xpath("//div[@class='headTitle']/span[text()='Story']"));
     }
 
