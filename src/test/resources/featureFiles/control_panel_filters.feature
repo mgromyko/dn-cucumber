@@ -109,17 +109,17 @@ Feature: Control Panel - Formats filter
 
   Scenario: Test 739: Control Panel - verify selected filters on other pages
     When I am at "Dashboard" page
-    Then I navigate to Story Lists - Story Ideas
+    Then I navigate to Story - Ideas
     And I am at "Story Ideas" page
     Then I click MoreFilters link at Control Panel
     And I verify that Tasks additional filter has "3 selected" value
 
-    Then I navigate to Story Lists - Short-term
+    Then I navigate to Story - Short-term
     And I am at "Short-term Planning" page
     Then I click MoreFilters link at Control Panel
     And I verify that Tasks additional filter has "3 selected" value
 
-    Then I navigate to Story Lists - Long-term
+    Then I navigate to Story - Long-term
     And I am at "Long-term Planning" page
     Then I click MoreFilters link at Control Panel
     And I verify that Tasks additional filter has "3 selected" value
@@ -197,10 +197,7 @@ Feature: Control Panel - Formats filter
     And I add Live task to Event
     Then I add "NY Times" platform to Event
     And I add "NY Times (Online)" platform to Event
-    And I wait for a second
     Then I set platform category to "spo2"
     And I set publication date to "Story idea (no date)"
     Then I click Save Event top link
     And I am at Dashboard page
-    
-    Then I wait for 5 seconds

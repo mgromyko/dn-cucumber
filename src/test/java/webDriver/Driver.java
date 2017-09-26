@@ -22,8 +22,8 @@ public class Driver {
 
         if (webdriver == null) {
             webdriver = WebdriverFactory.createWebdriver();
-            webdriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-            webdriver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+            webdriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+            webdriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
             webdriver.manage().deleteAllCookies();
             Calendar calendar = Calendar.getInstance();
             Date now = calendar.getTime();
@@ -58,12 +58,12 @@ public class Driver {
         TestRunner.scenario.write(string);
     }
 
-    public static void waitForElement(WebElement ele){
+    public static void waitForElement(WebElement ele) {
         WebDriverWait wait = new WebDriverWait(webdriver, 10);
         wait.until(ExpectedConditions.visibilityOf(ele));
     }
 
-    public static void waitForElementToDisappear(WebElement ele){
+    public static void waitForElementToDisappear(WebElement ele) {
         WebDriverWait wait = new WebDriverWait(webdriver, 10);
         wait.until(ExpectedConditions.invisibilityOf(ele));
     }

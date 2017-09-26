@@ -8,7 +8,9 @@ import webDriver.Driver;
 public class LoginPage {
     static WebDriver driver = Driver.getCurrentDriver();
 
-    public static WebElement treatLoginPageElement() { return driver.findElement(By.xpath("//a[@id='login-button']"));}
+    public static WebElement treatLoginPageElement() {
+        return driver.findElement(By.xpath("//a[@id='login-button']"));
+    }
 
     public static WebElement inputEmail() {
         return driver.findElement(By.id("username"));

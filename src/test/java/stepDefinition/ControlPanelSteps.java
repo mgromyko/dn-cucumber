@@ -1,30 +1,18 @@
 package stepDefinition;
 
 import cucumber.api.DataTable;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
-import org.junit.Assert;
-import org.junit.Test;
-import org.openqa.selenium.NoSuchElementException;
 import pageAction.ControlPanelActions;
-import pageObject.ControlPanel;
-import webDriver.Driver;
-
-import java.util.List;
 
 public class ControlPanelSteps {
     @And("^I click MoreFilters link at Control Panel$")
-    public void iClickMoreFiltersLinkAtControlPanel() throws Throwable {
-        try {
-            ControlPanelActions.clickMoreFiltersLink();
-        } catch (Exception e) {
-            System.out.println("Filters are already expanded or 'More Filters' link was not found!");
-        }
+    public void iClickMoreFiltersLinkAtControlPanel() {
+        ControlPanelActions.clickMoreFiltersLink();
     }
 
     @And("^I click HideFilters link at Control Panel$")
-    public void iClickHideFiltersLinkAtControlPanel() throws Throwable {
+    public void iClickHideFiltersLinkAtControlPanel() {
         ControlPanelActions.clickHideFiltersLink();
     }
 
@@ -32,168 +20,129 @@ public class ControlPanelSteps {
     public void iVerifyThatAdditionalFilterHasValue(String filterName, String filterValue) throws Throwable {
         switch (filterName) {
             case "Status":
-                Assert.assertTrue(ControlPanelActions.getStatusFilterDescription().equalsIgnoreCase(filterValue));
+                ControlPanelActions.verifyStatusFilterSelectedValue(filterValue);
                 break;
             case "Tasks":
-                Assert.assertTrue(ControlPanelActions.getTasksFilterDescription().equalsIgnoreCase(filterValue));
+                ControlPanelActions.verifyTasksFilterSelectedValue(filterValue);
                 break;
             case "Users":
-                Assert.assertTrue(ControlPanelActions.getUsersFilterDescription().equalsIgnoreCase(filterValue));
+                ControlPanelActions.verifyUsersFilterSelectedValue(filterValue);
                 break;
             default:
                 throw new Exception("You have indicated wrong filter name. Allowed options: [\"Status\",\"Tasks\",\"Users\"]");
         }
-
     }
 
     @Then("^I click on (Status|Tasks|Users) filter$")
-    public void iClickOnFilterName(String filterName) throws Throwable {
+    public void iClickOnFilterName(String filterName) {
         switch (filterName) {
             case "Status":
-                Driver.waitForElement(ControlPanel.statusFilterDescription());
-                ControlPanel.statusFilterDescription().click();
+                ControlPanelActions.clickStatusDescription();
                 break;
             case "Tasks":
-                Driver.waitForElement(ControlPanel.tasksFilterDescription());
-                ControlPanel.tasksFilterDescription().click();
+                ControlPanelActions.clickTasksDescription();
                 break;
             case "Users":
-                Driver.waitForElement(ControlPanel.usersFilterDescription());
-                ControlPanel.usersFilterDescription().click();
+                ControlPanelActions.clickUsersDescription();
                 break;
         }
     }
 
     @And("^I verify that parent filter option \"([^\"]*)\" is (checked|unchecked)$")
-    public void iVerifyThatValueIsPresentedAndChecked(String optionName, String verifyStatus) throws Throwable {
+    public void iVerifyThatValueIsPresentedAndChecked(String optionName, String verifyStatus) {
         switch (verifyStatus) {
             case "checked":
-                ControlPanel.checkedFilterParentOption(optionName);
+                ControlPanelActions.verifyParentFilterIsChecked(optionName, true);
                 break;
             case "unchecked":
-                ControlPanel.uncheckedFilterParentOption(optionName);
+                ControlPanelActions.verifyParentFilterIsChecked(optionName, false);
                 break;
         }
     }
 
     @And("^I verify that child filter option \"([^\"]*)\" is (checked|unchecked)$")
-    public void iVerifyThatChildFilterOptionIsChecked(String optionName, String verifyStatus) throws Throwable {
+    public void iVerifyThatChildFilterOptionIsChecked(String optionName, String verifyStatus) {
         switch (verifyStatus) {
             case "checked":
-                ControlPanel.checkedFilterChildOption(optionName);
+                ControlPanelActions.verifyChildFilterIsChecked(optionName, true);
                 break;
             case "unchecked":
-                ControlPanel.uncheckedFilterChildOption(optionName);
+                ControlPanelActions.verifyChildFilterIsChecked(optionName, false);
                 break;
         }
     }
 
     @And("^I verify child filter options checked status$")
-    public void iVerifyThatChildFilterOptionIs(DataTable filterOptionsList) throws Throwable {
-        List<List<String>> optionList = filterOptionsList.raw();
-
-        for (List<String> option : optionList) {
-            String optionName = option.get(0);
-            String optionStatus = option.get(1);
-            switch (optionStatus) {
-                case "checked":
-                    ControlPanel.checkedFilterChildOption(optionName);
-                    break;
-                case "unchecked":
-                    ControlPanel.uncheckedFilterChildOption(optionName);
-            }
-        }
+    public void iVerifyThatChildFilterOptionIs(DataTable filterOptionsList) {
+        ControlPanelActions.verifyFilterOptionsCheckedStatus(filterOptionsList);
     }
 
     @And("^I press (ENTER|CANCEL) in filters pop-up$")
-    public void iPressENTERorCANCELInFiltersPopUp(String btnName) throws Throwable {
+    public void iPressENTERorCANCELInFiltersPopUp(String btnName) {
         switch (btnName) {
             case "ENTER":
-                ControlPanel.enterBtnFilterPopUp().click();
+                ControlPanelActions.clickEnterBtnPopUp();
                 break;
             case "CANCEL":
-                ControlPanel.cancelBtnFilterPopUp().click();
+                ControlPanelActions.clickCancelBtnPopUp();
                 break;
         }
     }
 
     @And("^I verify APPLY filters button is (enabled|disabled)$")
-    public void iVerifyAPPLYFiltersButtonIsDisabled(String btnState) throws Throwable {
+    public void iVerifyAPPLYFiltersButtonIsDisabled(String btnState) {
         switch (btnState) {
             case "enabled":
-                ControlPanel.applyBtnEnabled().isDisplayed();
+                ControlPanelActions.verifyApplyBtnEnabledStatus(true);
                 break;
             case "disabled":
-                ControlPanel.applyBtnDisabled().isDisplayed();
+                ControlPanelActions.verifyApplyBtnEnabledStatus(false);
                 break;
         }
     }
 
     @And("^I click APPLY filters button$")
-    public void iClickAPPLYFiltersButton() throws Throwable {
-        try {
-            ControlPanel.applyBtnEnabled().click();
-        } catch (Exception e) {
-            System.out.println("Apply button is either not visible or disabled");
-        }
+    public void iClickAPPLYFiltersButton() {
+        ControlPanelActions.clickApplyBtn();
     }
 
     @And("^I uncheck All filters$")
-    public void iUncheckAllFilters() throws Throwable {
-        ControlPanel.checkedFilterParentOption("All").click();
+    public void iUncheckAllFilters() {
+        ControlPanelActions.uncheckFilterParentOption("All");
     }
 
     @And("^I check All filters$")
-    public void iCheckAllFilters() throws Throwable {
-        ControlPanel.uncheckedFilterParentOption("All").click();
+    public void iCheckAllFilters() {
+        ControlPanelActions.checkFilterParentOption("All");
     }
 
     @And("^I check \"([^\"]*)\" filter$")
-    public void iCheckFilter(String filterName) throws Throwable {
-        ControlPanelActions.scrollFiltersTo(filterName);
-        ControlPanel.uncheckedFilterChildOption(filterName).click();
+    public void iCheckFilter(String filterName) {
+        ControlPanelActions.checkFilterChildOption(filterName);
     }
 
     @And("^I uncheck \"([^\"]*)\" filter$")
-    public void iSelectFilter(String filterName) throws Throwable {
-        ControlPanelActions.scrollFiltersTo(filterName);
-        ControlPanel.checkedFilterChildOption(filterName).click();
+    public void iSelectFilter(String filterName) {
+        ControlPanelActions.uncheckFilterChildOption(filterName);
     }
 
     @And("^I see active filters: \"([^\"]*)\"$")
-    public void iSeeActiveFilters(String expectedFilters) throws Throwable {
-        Assert.assertTrue(ControlPanelActions.getActiveFiltersText().equalsIgnoreCase(expectedFilters));
+    public void iSeeActiveFilters(String expectedFilters) {
+        ControlPanelActions.verifyActiveFilters(expectedFilters);
     }
 
     @And("^I reset all Dashboard filters$")
-    public void iResetAllDashboardFilters() throws Throwable {
-        iClickMoreFiltersLinkAtControlPanel();
-        if (!ControlPanelActions.getStatusFilterDescription().equalsIgnoreCase("All statuses")) {
-            iClickOnFilterName("Status");
-            iCheckAllFilters();
-            ControlPanel.enterBtnFilterPopUp().click();
-        }
-        if (!ControlPanelActions.getTasksFilterDescription().equalsIgnoreCase("Any task")) {
-            iClickOnFilterName("Tasks");
-            iCheckAllFilters();
-            ControlPanel.enterBtnFilterPopUp().click();
-        }
-        if (!ControlPanelActions.getUsersFilterDescription().equalsIgnoreCase("All")) {
-            iClickOnFilterName("Users");
-            iCheckAllFilters();
-            ControlPanel.enterBtnFilterPopUp().click();
-        }
-        iClickAPPLYFiltersButton();
+    public void iResetAllDashboardFilters() {
+        ControlPanelActions.resetAllFilters();
     }
 
     @Then("^I scroll filters to \"([^\"]*)\"$")
-    public void iScrollFiltersTo(String filterName) throws Throwable {
+    public void iScrollFiltersTo(String filterName) {
         ControlPanelActions.scrollFiltersTo(filterName);
     }
 
-    @Test (expected=NoSuchElementException.class)
     @And("^I do not see (Status|Tasks|Users) filter$")
-    public void iDoNotSeeStatusTasksUsersFilter(String filterName) throws Throwable {
-        Assert.assertTrue(ControlPanelActions.filterIsMissing(filterName));
+    public void iDoNotSeeStatusTasksUsersFilter(String filterName) throws Exception {
+        ControlPanelActions.verifyFilterIsMissing(filterName);
     }
 }
