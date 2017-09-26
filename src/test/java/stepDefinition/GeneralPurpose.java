@@ -2,7 +2,6 @@ package stepDefinition;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
-import enums.Browser;
 import pageAction.BrowserActions;
 import webDriver.Driver;
 
@@ -19,7 +18,7 @@ public class GeneralPurpose {
 
     @Then("^I wait for (\\d+) seconds$")
     public void iWaitForSeconds(int sec) throws Throwable {
-        Thread.sleep(sec*1000);
+        Thread.sleep(sec * 1000);
     }
 
     @Then("^I wait for a second$")

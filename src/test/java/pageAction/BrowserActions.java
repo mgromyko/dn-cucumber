@@ -17,11 +17,11 @@ public class BrowserActions {
         wait.until(ExpectedConditions.titleContains("Login - Desk-Net"));
     }
 
-    public static void waitForPageLoadingIsCompleted(){
-        wait.until(ExpectedConditions.attributeContains(By.xpath("//div[@id='waitWidget']"),"aria-hidden", "true"));
+    public static void waitForPageLoadingIsCompleted() {
+        wait.until(ExpectedConditions.attributeContains(By.xpath("//div[@id='waitWidget']"), "aria-hidden", "true"));
     }
 
-    public static WebElement findElementWithText(String text){
-        return driver.findElement(By.xpath("//*[text()='" + text +"']"));
+    public static WebElement findElementWithText(String text) {
+        return driver.findElement(By.xpath("//*[text()='" + text + "']"));
     }
 }
