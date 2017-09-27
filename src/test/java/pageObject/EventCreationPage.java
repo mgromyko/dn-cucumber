@@ -92,11 +92,11 @@ public class EventCreationPage {
         }
 
         public static WebElement selectTypePopUp(String selectType) {
-            return driver.findElement(By.xpath("//div[@class='article publication-block last-panel']//span[text()='" + selectType + "']"));
+            return driver.findElement(By.xpath("//div[@class='article publication-block last-panel']//div[@class='list-box-item']//span[text()='" + selectType + "']"));
         }
 
         public static WebElement selectCategoryPopUp(String selectCategory) {
-            return driver.findElement(By.xpath("//div[@class='article publication-block last-panel']//span[text()='" + selectCategory + "']"));
+            return driver.findElement(By.xpath("//div[@class='article publication-block last-panel']//div[@class='list-box-item']//span[text()='" + selectCategory + "']"));
         }
 
         public static WebElement publicationDate() {

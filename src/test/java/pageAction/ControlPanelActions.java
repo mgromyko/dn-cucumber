@@ -19,6 +19,7 @@ public class ControlPanelActions {
 
     public static void clickApplyBtn() {
         try {
+            BrowserActions.scrollToElement(ControlPanel.applyBtnEnabled());
             ControlPanel.applyBtnEnabled().click();
         } catch (Exception e) {
             System.out.println("Apply button is either not visible or disabled");
@@ -155,12 +156,13 @@ public class ControlPanelActions {
     }
 
     public static void verifyActiveFilters(String expectedValue) {
-        Assert.assertTrue(ControlPanelActions.getActiveFiltersText().equalsIgnoreCase(expectedValue));
+        BrowserActions.scrollToElement(ControlPanel.controlHeader());
+        Assert.assertTrue(getActiveFiltersText().equalsIgnoreCase(expectedValue));
     }
 
     @Test(expected = NoSuchElementException.class)
     public static void verifyFilterIsMissing(String filterName) throws Exception {
-        Assert.assertTrue(ControlPanelActions.filterIsMissing(filterName));
+        Assert.assertTrue(filterIsMissing(filterName));
     }
 
     public static void scrollFiltersTo(String filterName) {
@@ -195,7 +197,7 @@ public class ControlPanelActions {
         }
     }
 
-    public static void resetAllFilters() {
+    public static void resetAllFilters() throws InterruptedException {
         ControlPanelActions.clickMoreFiltersLink();
         if (!ControlPanelActions.getStatusFilterDescription().equalsIgnoreCase("All statuses")) {
             ControlPanelActions.clickStatusDescription();
@@ -213,5 +215,6 @@ public class ControlPanelActions {
             ControlPanel.enterBtnFilterPopUp().click();
         }
         ControlPanelActions.clickApplyBtn();
+        BrowserActions.waitForPageLoadingIsCompleted();
     }
 }
