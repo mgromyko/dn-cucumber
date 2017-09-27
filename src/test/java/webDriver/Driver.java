@@ -22,7 +22,7 @@ public class Driver {
 
         if (webdriver == null) {
             webdriver = WebdriverFactory.createWebdriver();
-            webdriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+            webdriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
             webdriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
             webdriver.manage().deleteAllCookies();
             Calendar calendar = Calendar.getInstance();

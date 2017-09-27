@@ -3,6 +3,7 @@ package stepDefinition;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+import pageAction.BrowserActions;
 import pageAction.ControlPanelActions;
 
 public class ControlPanelSteps {
@@ -132,7 +133,7 @@ public class ControlPanelSteps {
     }
 
     @And("^I reset all Dashboard filters$")
-    public void iResetAllDashboardFilters() {
+    public void iResetAllDashboardFilters() throws InterruptedException {
         ControlPanelActions.resetAllFilters();
     }
 

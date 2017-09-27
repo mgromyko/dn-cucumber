@@ -32,6 +32,7 @@ public class EventCreationPageActions {
 
     public static void setPlatformCategory(String categoryName) {
         //TODO: verify if required platfor is already selected
+        System.out.println(EventCreationPage.PlatformsPanel.selectCategory().getText());
         EventCreationPage.PlatformsPanel.selectCategory().click();
         wait.until(ExpectedConditions.visibilityOf(EventCreationPage.PlatformsPanel.selectCategoryPopUp(categoryName)));
         EventCreationPage.PlatformsPanel.selectCategoryPopUp(categoryName).click();
