@@ -1,15 +1,9 @@
 package pageAction;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObject.LoginPage;
-import webDriver.Driver;
 
-public class LoginActions {
-
-    static WebDriver driver = Driver.getCurrentDriver();
-    static WebDriverWait wait = new WebDriverWait(driver, 10);
+public class LoginActions extends BasePageActions {
 
     public static void login(String mail, String pwd) {
         wait.until(ExpectedConditions.elementToBeClickable(LoginPage.loginBtn()));

@@ -8,7 +8,7 @@ try {
     var args = process.argv.slice(2);
 
     var options = {
-            theme: 'foundation',
+            theme: 'simple',
             jsonDir: args[0],
             output: args[1],
             reportSuiteAsScenarios: false,

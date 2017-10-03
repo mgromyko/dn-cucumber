@@ -2,11 +2,13 @@ package stepDefinition;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+import pageAction.BrowserActions;
 import pageAction.DashboardPageActions;
 
 public class DashboardSteps {
     @Then("^I am at Dashboard page$")
     public void iAmAtDashboardPage() throws Throwable {
+        BrowserActions.waitForPageLoadingIsCompleted();
         DashboardPageActions.verifyPageIsActive();
     }
 

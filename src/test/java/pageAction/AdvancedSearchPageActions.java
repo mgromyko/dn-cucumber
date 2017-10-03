@@ -2,7 +2,7 @@ package pageAction;
 
 import pageObject.AdvancedSearchPage;
 
-public class AdvancedSearchPageActions {
+public class AdvancedSearchPageActions extends BasePageActions{
 
     public static void inputTextForSearch(String textToSearch) {
         AdvancedSearchPage.searchTermInput().sendKeys(textToSearch);

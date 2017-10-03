@@ -1,13 +1,8 @@
 package pageAction;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObject.DashboardPage;
-import webDriver.Driver;
 
-public class DashboardPageActions {
-    static WebDriver driver = Driver.getCurrentDriver();
-    static WebDriverWait wait = new WebDriverWait(driver, 10);
+public class DashboardPageActions extends BasePageActions {
 
     public static void verifyPageIsActive() {
         DashboardPage.treatDashboardElement().isDisplayed();
