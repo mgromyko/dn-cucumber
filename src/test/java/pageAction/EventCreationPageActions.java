@@ -1,17 +1,11 @@
 package pageAction;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObject.EventCreationPage;
 import webDriver.Driver;
 
-public class EventCreationPageActions {
-    static WebDriver driver = Driver.getCurrentDriver();
-    static WebDriverWait wait = new WebDriverWait(driver, 10);
-    static Actions action = new Actions(driver);
+public class EventCreationPageActions extends BasePageActions {
 
     public static void callContextMenuForElement(WebElement ele) {
         action.moveToElement(ele).perform();
@@ -32,6 +26,7 @@ public class EventCreationPageActions {
 
     public static void setPlatformCategory(String categoryName) {
         //TODO: verify if required platform is already selected
+        wait.until(ExpectedConditions.elementToBeClickable(EventCreationPage.PlatformsPanel.selectCategory()));
         EventCreationPage.PlatformsPanel.selectCategory().click();
         wait.until(ExpectedConditions.visibilityOf(EventCreationPage.PlatformsPanel.selectCategoryPopUp(categoryName)));
         EventCreationPage.PlatformsPanel.selectCategoryPopUp(categoryName).click();

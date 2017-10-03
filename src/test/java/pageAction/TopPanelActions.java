@@ -1,18 +1,11 @@
 package pageAction;
 
 import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObject.TopPanel;
-import webDriver.Driver;
 
-public class TopPanelActions {
-    static WebDriver driver = Driver.getCurrentDriver();
-    static WebDriverWait wait = new WebDriverWait(driver, 10);
-    static Actions action = new Actions(driver);
+public class TopPanelActions extends BasePageActions {
 
     public static String getSelectedTopPanelMenuItem() {
         return TopPanel.selectedMenuItem().getText();
@@ -23,7 +16,7 @@ public class TopPanelActions {
     }
 
     public static void clickOnAdvancedSearchLink() throws InterruptedException {
-        BrowserActions.waitForPageLoadingIsCompleted();
+        waitForPageLoadingIsCompleted();
         Thread.sleep(500);
         TopPanel.searchIcon().click();
         wait.until(ExpectedConditions.elementToBeClickable(TopPanel.advancedSearchLink()));

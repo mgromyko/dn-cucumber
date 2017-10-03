@@ -193,7 +193,7 @@ Feature: Control Panel - Formats filter
     And I reset all Dashboard filters
     Then I create a new Event
     And I am at new Event creation page
-    Then I enter Event Description "SHOW"
+    Then I enter Event Description "Test 739 - SHOW"
     And I add Live task to Event
     Then I add "NY Times" platform to Event
     And I add "NY Times (Online)" platform to Event
@@ -201,3 +201,14 @@ Feature: Control Panel - Formats filter
     And I set publication date to "Story idea (no date)"
     Then I click Save Event top link
     And I am at Dashboard page
+    Then I navigate to Story - Ideas
+    And I see "Test 739 - SHOW" at "spo2" Story Idea section
+    Then I navigate to Story - Short-term
+    And I see "Test 739 - SHOW" at "spo2" Story Idea section
+    Then I navigate to Story - Long-term
+    And I see "Test 739 - SHOW" at "spo2" Story Idea section
+    Then I navigate to Calendar - Short-term
+    And I see "Test 739 - SHOW" at "spo2" Story Idea section
+    Then I navigate to Calendar - Long-term
+    And I see "Test 739 - SHOW" at "spo2" Story Idea section
+    And I wait for 5 seconds

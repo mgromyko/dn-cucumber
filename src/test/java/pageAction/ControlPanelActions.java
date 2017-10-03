@@ -13,13 +13,11 @@ import webDriver.Driver;
 
 import java.util.List;
 
-public class ControlPanelActions {
-    static WebDriver driver = Driver.getCurrentDriver();
-    static WebDriverWait wait = new WebDriverWait(driver, 10);
+public class ControlPanelActions extends BasePageActions {
 
     public static void clickApplyBtn() {
         try {
-            BrowserActions.scrollToElement(ControlPanel.applyBtnEnabled());
+            scrollToElement(ControlPanel.applyBtnEnabled());
             ControlPanel.applyBtnEnabled().click();
         } catch (Exception e) {
             System.out.println("Apply button is either not visible or disabled");
@@ -156,7 +154,7 @@ public class ControlPanelActions {
     }
 
     public static void verifyActiveFilters(String expectedValue) {
-        BrowserActions.scrollToElement(ControlPanel.controlHeader());
+        scrollToElement(ControlPanel.controlHeader());
         Assert.assertTrue(getActiveFiltersText().equalsIgnoreCase(expectedValue));
     }
 

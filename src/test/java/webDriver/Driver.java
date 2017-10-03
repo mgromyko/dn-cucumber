@@ -17,13 +17,16 @@ public class Driver {
 
     public static WebDriver webdriver;
     public static long timeStamp;
+    private static int implicitWait = Integer.parseInt(TestRunner.config.get("implicitWait"));
+    private static int pageLoadTimeout = Integer.parseInt(TestRunner.config.get("pageLoadTimeout"));
 
     public synchronized static WebDriver getCurrentDriver() {
 
         if (webdriver == null) {
             webdriver = WebdriverFactory.createWebdriver();
-            webdriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-            webdriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
+            assert webdriver != null;
+            webdriver.manage().timeouts().implicitlyWait(implicitWait, TimeUnit.SECONDS);
+            webdriver.manage().timeouts().pageLoadTimeout(pageLoadTimeout, TimeUnit.SECONDS);
             webdriver.manage().deleteAllCookies();
             Calendar calendar = Calendar.getInstance();
             Date now = calendar.getTime();
@@ -59,12 +62,12 @@ public class Driver {
     }
 
     public static void waitForElement(WebElement ele) {
-        WebDriverWait wait = new WebDriverWait(webdriver, 10);
+        WebDriverWait wait = new WebDriverWait(webdriver, implicitWait);
         wait.until(ExpectedConditions.visibilityOf(ele));
     }
 
     public static void waitForElementToDisappear(WebElement ele) {
-        WebDriverWait wait = new WebDriverWait(webdriver, 10);
+        WebDriverWait wait = new WebDriverWait(webdriver, implicitWait);
         wait.until(ExpectedConditions.invisibilityOf(ele));
     }
 }
