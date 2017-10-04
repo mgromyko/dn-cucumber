@@ -3,3 +3,4 @@ reports/
 target/
 .DS_store
 selenium-cucumber-framework.iml
+src/test/resources/config.properties

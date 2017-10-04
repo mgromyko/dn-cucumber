@@ -16,4 +16,5 @@ import java.util.Map;
 public class TestRunner {
     public static Map<String, String> config;
     public static Scenario scenario;
+    public static boolean isMobile;
 }

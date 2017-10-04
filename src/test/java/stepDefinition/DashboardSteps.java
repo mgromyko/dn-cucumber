@@ -3,7 +3,7 @@ package stepDefinition;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import pageAction.BrowserActions;
-import pageAction.DashboardPageActions;
+import pageAction.desktop.DashboardPageActions;
 
 public class DashboardSteps {
     @Then("^I am at Dashboard page$")

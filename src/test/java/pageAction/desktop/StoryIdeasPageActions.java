@@ -1,6 +1,7 @@
-package pageAction;
+package pageAction.desktop;
 
-import pageObject.StoryIdeasPage;
+import pageAction.BasePageActions;
+import pageObject.desktop.StoryIdeasPage;
 
 public class StoryIdeasPageActions extends BasePageActions {
 

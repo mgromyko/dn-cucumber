@@ -1,4 +1,4 @@
-package pageAction;
+package pageAction.desktop;
 
 import cucumber.api.DataTable;
 import org.junit.Assert;
@@ -6,9 +6,9 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import pageObject.ControlPanel;
+import pageAction.BasePageActions;
+import pageAction.BrowserActions;
+import pageObject.desktop.ControlPanel;
 import webDriver.Driver;
 
 import java.util.List;
@@ -75,13 +75,13 @@ public class ControlPanelActions extends BasePageActions {
 
     public static void checkFilterChildOption(String childOptionName) {
         //TODO: verify if it already checked
-        ControlPanelActions.scrollFiltersTo(childOptionName);
+        scrollFiltersTo(childOptionName);
         ControlPanel.uncheckedFilterChildOption(childOptionName).click();
     }
 
     public static void uncheckFilterChildOption(String childOptionName) {
         //TODO: verify if it already unchecked
-        ControlPanelActions.scrollFiltersTo(childOptionName);
+        scrollFiltersTo(childOptionName);
         ControlPanel.checkedFilterChildOption(childOptionName).click();
     }
 
@@ -102,15 +102,15 @@ public class ControlPanelActions extends BasePageActions {
     }
 
     public static void verifyStatusFilterSelectedValue(String currentStatus) {
-        Assert.assertTrue(ControlPanelActions.getStatusFilterDescription().equalsIgnoreCase(currentStatus));
+        Assert.assertTrue(getStatusFilterDescription().equalsIgnoreCase(currentStatus));
     }
 
     public static void verifyTasksFilterSelectedValue(String currentStatus) {
-        Assert.assertTrue(ControlPanelActions.getTasksFilterDescription().equalsIgnoreCase(currentStatus));
+        Assert.assertTrue(getTasksFilterDescription().equalsIgnoreCase(currentStatus));
     }
 
     public static void verifyUsersFilterSelectedValue(String currentStatus) {
-        Assert.assertTrue(ControlPanelActions.getUsersFilterDescription().equalsIgnoreCase(currentStatus));
+        Assert.assertTrue(getUsersFilterDescription().equalsIgnoreCase(currentStatus));
     }
 
     public static void verifyParentFilterIsChecked(String parentOptionName, boolean isChecked) {
@@ -196,23 +196,23 @@ public class ControlPanelActions extends BasePageActions {
     }
 
     public static void resetAllFilters() throws InterruptedException {
-        ControlPanelActions.clickMoreFiltersLink();
-        if (!ControlPanelActions.getStatusFilterDescription().equalsIgnoreCase("All statuses")) {
-            ControlPanelActions.clickStatusDescription();
-            ControlPanelActions.checkFilterParentOption("All");
+        clickMoreFiltersLink();
+        if (!getStatusFilterDescription().equalsIgnoreCase("All statuses")) {
+            clickStatusDescription();
+            checkFilterParentOption("All");
             ControlPanel.enterBtnFilterPopUp().click();
         }
-        if (!ControlPanelActions.getTasksFilterDescription().equalsIgnoreCase("Any task")) {
-            ControlPanelActions.clickTasksDescription();
-            ControlPanelActions.checkFilterParentOption("All");
+        if (!getTasksFilterDescription().equalsIgnoreCase("Any task")) {
+            clickTasksDescription();
+            checkFilterParentOption("All");
             ControlPanel.enterBtnFilterPopUp().click();
         }
-        if (!ControlPanelActions.getUsersFilterDescription().equalsIgnoreCase("All")) {
-            ControlPanelActions.clickUsersDescription();
-            ControlPanelActions.checkFilterParentOption("All");
+        if (!getUsersFilterDescription().equalsIgnoreCase("All")) {
+            clickUsersDescription();
+            checkFilterParentOption("All");
             ControlPanel.enterBtnFilterPopUp().click();
         }
-        ControlPanelActions.clickApplyBtn();
+        clickApplyBtn();
         BrowserActions.waitForPageLoadingIsCompleted();
     }
 }

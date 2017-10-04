@@ -1,6 +1,7 @@
-package pageAction;
+package pageAction.desktop;
 
-import pageObject.DashboardPage;
+import pageAction.BasePageActions;
+import pageObject.desktop.DashboardPage;
 
 public class DashboardPageActions extends BasePageActions {
 

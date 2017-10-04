@@ -1,8 +1,9 @@
-package pageAction;
+package pageAction.desktop;
 
-import pageObject.AdvancedSearchPage;
+import pageAction.BasePageActions;
+import pageObject.desktop.AdvancedSearchPage;
 
-public class AdvancedSearchPageActions extends BasePageActions{
+public class AdvancedSearchPageActions extends BasePageActions {
 
     public static void inputTextForSearch(String textToSearch) {
         AdvancedSearchPage.searchTermInput().sendKeys(textToSearch);

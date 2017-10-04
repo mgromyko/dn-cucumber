@@ -29,7 +29,6 @@ public class GeneralPurpose {
     @Then("^I wait for page loading has been completed$")
     public void iWaitForPageLoadingHasBeenCompleted() throws Throwable {
         BrowserActions.waitForPageLoadingIsCompleted();
-        Thread.sleep(1000);
     }
 
     @And("^I click on \"([^\"]*)\"$")

@@ -1,10 +1,10 @@
-package pageAction;
+package pageAction.desktop;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import pageObject.LoginPage;
+import pageAction.BasePageActions;
+import pageObject.desktop.LoginPage;
 
 public class LoginActions extends BasePageActions {
-
     public static void login(String mail, String pwd) {
         wait.until(ExpectedConditions.elementToBeClickable(LoginPage.loginBtn()));
         LoginPage.inputEmail().sendKeys(mail);
@@ -14,5 +14,6 @@ public class LoginActions extends BasePageActions {
 
     public static void verifyPageIsActive() {
         LoginPage.treatLoginPageElement().isDisplayed();
+
     }
 }
