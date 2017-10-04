@@ -27,7 +27,6 @@ public class Hooks {
 
     @After
     public void after(Scenario scenario) {
-
         if (scenario.isFailed()) {
             Driver.embedScreenshot();
         }

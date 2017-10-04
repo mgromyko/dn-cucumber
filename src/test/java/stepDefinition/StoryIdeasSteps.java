@@ -1,7 +1,7 @@
 package stepDefinition;
 
 import cucumber.api.java.en.And;
-import pageAction.StoryIdeasPageActions;
+import pageAction.desktop.StoryIdeasPageActions;
 
 public class StoryIdeasSteps {
     @And("^I see \"([^\"]*)\" at \"([^\"]*)\" Story Idea section$")

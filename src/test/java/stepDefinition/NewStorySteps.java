@@ -2,7 +2,7 @@ package stepDefinition;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
-import pageAction.StoryCreationPageActions;
+import pageAction.desktop.StoryCreationPageActions;
 
 public class NewStorySteps {
     @And("^I am at new Story creation page$")

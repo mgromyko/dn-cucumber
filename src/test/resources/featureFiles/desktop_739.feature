@@ -1,7 +1,8 @@
+@desktop @format_filters @test739
 Feature: Control Panel - Formats filter
 
   Background:
-    Given I open a browser and go to login page
+    Given I open a browser and go to desktop login page
     And I am at Login page
     Then I login as valid user
     And I navigate to Dashboard
@@ -29,7 +30,7 @@ Feature: Control Panel - Formats filter
     When I am at "Dashboard" page
     Given I reset all Dashboard filters
     And I verify that "DASHBOARD" is selected in navigation panel menu
-    And I click MoreFilters link at Control Panel
+    And I click open filters at Control Panel
     Then I verify that Status additional filter has "All statuses" value
     And I verify that Tasks additional filter has "Any task" value
     And I verify that Users additional filter has "All" value
@@ -60,7 +61,7 @@ Feature: Control Panel - Formats filter
 
   Scenario: Test 739: Control Panel - verify filtering
     When I am at "Dashboard" page
-    And I click MoreFilters link at Control Panel
+    And I click open filters at Control Panel
     Then I click on Tasks filter
     And I uncheck All filters
     And I check "Text" filter
@@ -71,7 +72,7 @@ Feature: Control Panel - Formats filter
     And I see active filters: "tasks"
     And I verify that "Test 739: Story with Text only" displayed at Story List
 
-    Then I click MoreFilters link at Control Panel
+    Then I click open filters at Control Panel
     And I click on Tasks filter
     And I check "Photo" filter
     Then I press ENTER in filters pop-up
@@ -82,7 +83,7 @@ Feature: Control Panel - Formats filter
     And I verify that "Test 739: Story with Text only" displayed at Story List
     And I verify that "Test 739: Story with Photo only" displayed at Story List
 
-    Then I click MoreFilters link at Control Panel
+    Then I click open filters at Control Panel
     And I click on Tasks filter
     And I uncheck "Photo" filter
     And I uncheck "Text" filter
@@ -94,7 +95,7 @@ Feature: Control Panel - Formats filter
     And I see active filters: "tasks"
     And I verify that "Test 739: Story without content" displayed at Story List
 
-    Then I click MoreFilters link at Control Panel
+    Then I click open filters at Control Panel
     And I click on Tasks filter
     And I check "Audio" filter
     And I check "Text" filter
@@ -111,42 +112,42 @@ Feature: Control Panel - Formats filter
     When I am at "Dashboard" page
     Then I navigate to Story - Ideas
     And I am at "Story Ideas" page
-    Then I click MoreFilters link at Control Panel
+    Then I click open filters at Control Panel
     And I verify that Tasks additional filter has "3 selected" value
 
     Then I navigate to Story - Short-term
     And I am at "Short-term Planning" page
-    Then I click MoreFilters link at Control Panel
+    Then I click open filters at Control Panel
     And I verify that Tasks additional filter has "3 selected" value
 
     Then I navigate to Story - Long-term
     And I am at "Long-term Planning" page
-    Then I click MoreFilters link at Control Panel
+    Then I click open filters at Control Panel
     And I verify that Tasks additional filter has "3 selected" value
 
     Then I navigate to Calendar - Short-term
     And I am at "Short-term Calendar" page
-    Then I click MoreFilters link at Control Panel
+    Then I click open filters at Control Panel
     And I verify that Tasks additional filter has "3 selected" value
 
     Then I navigate to Calendar - Long-term
     And I am at "Long-term Calendar" page
-    Then I click MoreFilters link at Control Panel
+    Then I click open filters at Control Panel
     And I verify that Tasks additional filter has "3 selected" value
 
     Then I navigate to Management - Alerts
     And I am at "Alerts" page
-    Then I click MoreFilters link at Control Panel
+    Then I click open filters at Control Panel
     And I verify that Tasks additional filter has "3 selected" value
 
     Then I navigate to Management - Timeline
     And I am at "Timeline" page
-    Then I click MoreFilters link at Control Panel
+    Then I click open filters at Control Panel
     And I verify that Tasks additional filter has "3 selected" value
 
     Then I navigate to My Schedule
     And I am at "My Schedule" page
-    Then I click MoreFilters link at Control Panel
+    Then I click open filters at Control Panel
     And I do not see Status filter
     And I do not see Tasks filter
     And I do not see Users filter

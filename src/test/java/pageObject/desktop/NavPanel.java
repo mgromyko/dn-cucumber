@@ -1,11 +1,11 @@
-package pageObject;
+package pageObject.desktop;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import webDriver.Driver;
 
-public class TopPanel {
+public class NavPanel {
     static WebDriver driver = Driver.getCurrentDriver();
 
     public static WebElement menuHamburger() {

@@ -3,18 +3,37 @@ package stepDefinition;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
-import pageAction.BrowserActions;
-import pageAction.ControlPanelActions;
+import pageAction.desktop.ControlPanelActions;
+import pageAction.mobile.mControlPanelActions;
+import testRunner.TestRunner;
 
 public class ControlPanelSteps {
-    @And("^I click MoreFilters link at Control Panel$")
-    public void iClickMoreFiltersLinkAtControlPanel() {
-        ControlPanelActions.clickMoreFiltersLink();
+    @And("^I click (open|hide) filters at Control Panel$")
+    public void iClickMoreFiltersLinkAtControlPanel(String action) throws InterruptedException {
+        if (TestRunner.isMobile){
+            switch (action){
+                case "open":
+                    mControlPanelActions.clickMoreFiltersLink();
+                    break;
+                case "hide":
+                    mControlPanelActions.clickHideFiltersLink();
+                    break;
+            }
+        } else {
+            switch (action){
+                case "open":
+                    ControlPanelActions.clickMoreFiltersLink();
+                    break;
+                case "hide":
+                    ControlPanelActions.clickHideFiltersLink();
+                    break;
+            }
+        }
     }
 
-    @And("^I click HideFilters link at Control Panel$")
+    @And("^I click hide filters at Control Panel$")
     public void iClickHideFiltersLinkAtControlPanel() {
-        ControlPanelActions.clickHideFiltersLink();
+
     }
 
     @Then("^I verify that (Status|Tasks|Users) additional filter has \"([^\"]*)\" value$")

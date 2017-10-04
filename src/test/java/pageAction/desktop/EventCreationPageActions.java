@@ -1,8 +1,9 @@
-package pageAction;
+package pageAction.desktop;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import pageObject.EventCreationPage;
+import pageAction.BasePageActions;
+import pageObject.desktop.EventCreationPage;
 import webDriver.Driver;
 
 public class EventCreationPageActions extends BasePageActions {

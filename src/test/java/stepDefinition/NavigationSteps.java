@@ -14,14 +14,26 @@ public class NavigationSteps {
         BrowserActions.openUrl(webURL);
     }
 
-    @When("^I open a browser and go to login page$")
-    public void iOpenDesktopVersionOfSite() throws Throwable {
-        String siteUrl = TestRunner.config.get("siteUrl");
-        BrowserActions.openUrl(siteUrl);
+    @When("^I open a browser and go to (desktop|mobile) login page$")
+    public void iOpenDesktopVersionOfSite(String siteVersion) throws Throwable {
+        String url = null;
+        switch (siteVersion){
+            case "desktop":
+                url = TestRunner.config.get("siteUrl");
+                TestRunner.isMobile = false;
+                break;
+            case "mobile":
+                url = TestRunner.config.get("mobileSiteUrl");
+                TestRunner.isMobile = true;
+                break;
+        }
+        BrowserActions.openUrl(url);
     }
 
     @Then("^I am at \"([^\"]*)\" page$")
     public void iAmAtPage(String expectedHeader) throws Throwable {
+        BrowserActions.waitForPageLoadingIsCompleted();
         Assert.assertTrue(BasePageActions.getControlHeaderName().equalsIgnoreCase(expectedHeader));
     }
+
 }

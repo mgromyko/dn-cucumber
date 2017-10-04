@@ -2,7 +2,7 @@ package stepDefinition;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
-import pageAction.AdvancedSearchPageActions;
+import pageAction.desktop.AdvancedSearchPageActions;
 
 public class AdvancedSearchSteps {
     @Then("^I select (Any user|Limit to these) for 'Assigned to' option$")

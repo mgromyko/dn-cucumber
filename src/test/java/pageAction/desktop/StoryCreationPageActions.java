@@ -1,7 +1,8 @@
-package pageAction;
+package pageAction.desktop;
 
 import org.openqa.selenium.WebElement;
-import pageObject.StoryCreationPage;
+import pageAction.BasePageActions;
+import pageObject.desktop.StoryCreationPage;
 import webDriver.Driver;
 
 public class StoryCreationPageActions extends BasePageActions {

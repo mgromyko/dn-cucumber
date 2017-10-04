@@ -2,7 +2,7 @@ package stepDefinition;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
-import pageAction.EventCreationPageActions;
+import pageAction.desktop.EventCreationPageActions;
 
 public class NewEventSteps {
     @And("^I am at new Event creation page$")
